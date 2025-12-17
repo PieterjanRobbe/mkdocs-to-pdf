@@ -174,7 +174,7 @@ class Generator(object):
         else:
 
             html = HTML(string=html_string)
-            css = CSS(string='.wy-grid-for-nav { position: static !important; }')
+            css = CSS(string='.wy-grid-for-nav { position: static !important; } \n\n * { float: none !important; }')
             html.write_pdf(target=abs_pdf_path, stylesheets=[css])
             # render = html.render()
             # render.write_pdf(abs_pdf_path)
