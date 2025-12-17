@@ -47,6 +47,8 @@ class Options(object):
             config_options.Type(str, default='chromium-browser')),
         ('relaxedjs_path',
             config_options.Type(str, default=None)),
+        ('paper_size', config_options.Choice(
+            ['a4', 'letter'], default='a4')),
     )
 
     def __init__(self, local_config, config, logger: logging):
@@ -91,6 +93,7 @@ class Options(object):
         self.convert_iframe = local_config['convert_iframe']
 
         self.two_columns_level = local_config['two_columns_level']
+        self.paper_size = local_config['paper_size']
 
         # ...etc.
         self.js_renderer = None

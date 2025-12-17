@@ -35,8 +35,11 @@ def style_for_print(options: Options) -> str:
 
     base_path = os.path.abspath(os.path.dirname(__file__))
 
-    filename = os.path.join(base_path, "report-print.scss")
-    css += sass.compile(filename=filename)
+    report_scss = f"$pdf-paper-size: {options.paper_size};\n" \
+                  '@import "report-print.scss";\n'
+    css += sass.compile(
+        string=report_scss,
+        include_paths=[base_path])
 
     if options.cover or options.back_cover:
         filename = os.path.join(base_path, "cover.scss")

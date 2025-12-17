@@ -161,6 +161,19 @@ plugins:
       heading_shift: false
 ```
 
+### Page Layout
+
+#### `paper_size`
+
+Sets the paper size for the generated PDF pages. Accepts `a4` (default) or
+`letter`.
+
+``` yaml
+plugins:
+  - to-pdf:
+      paper_size: letter
+```
+
 ### Output
 
 #### `output_path`

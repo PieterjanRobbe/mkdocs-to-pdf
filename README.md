@@ -7,10 +7,11 @@
 
 `mkdocs-to-pdf` is an [`mkdocs`][mkdocs] plugin to generate a PDF from an `MkDocs` repository.
 
-This repository is a fork of [`mkdocs-with-pdf`][mkdocs-with-pdf], which itself
-was inspired by [`mkdocs-pdf-export-plugin`][mkdocs-pdf-export-plugin].
+This repository is a fork of [`mkdocs-to-pdf`](mkdocs-to-pdf), which itself is a fork of [`mkdocs-with-pdf`][mkdocs-with-pdf], which itself
+was inspired by [`mkdocs-pdf-export-plugin`][mkdocs-pdf-export-plugin]. The main addition compared to [`mkdocs-to-pdf`](mkdocs-to-pdf) is an option to change the paper size.
 
 [mkdocs]: https://www.mkdocs.org/
+[mkdocs-to-pdf]: https://github.com/domWalters/mkdocs-to-pdf
 [mkdocs-with-pdf]: https://github.com/orzih/mkdocs-with-pdf
 [mkdocs-pdf-export-plugin]: https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
 

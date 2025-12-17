@@ -1,5 +1,7 @@
+$pdf-paper-size: a4 !default;
+
 @page {
-  size: a4 portrait;
+  size: #{$pdf-paper-size} portrait;
   margin: 25mm 10mm 25mm 10mm;
   counter-increment: page;
   white-space: pre;
