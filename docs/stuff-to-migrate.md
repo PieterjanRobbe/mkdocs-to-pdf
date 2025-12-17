@@ -26,6 +26,7 @@ plugins:
         #
         #render_js: true
         #headless_chrome_path: headless-chromium
+        #render_js_timeout: 10000
         #
         #show_anchors: true
 ```
@@ -80,6 +81,12 @@ plugins:
     If `render_js` is _`false`_, this value will be ignored.  
 
     **default**: `chromium-browser`
+
+* `render_js_timeout`
+
+    Set the virtual time budget (in milliseconds) that Headless Chrome may spend rendering JavaScript before dumping the DOM. Increase this if your documentation needs more time to run scripts before printing.  
+
+    **default**: `10000`
 
 > Check on your system:
 >

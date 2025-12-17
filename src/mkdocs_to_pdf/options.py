@@ -45,6 +45,8 @@ class Options(object):
         ('render_js', config_options.Type(bool, default=False)),
         ('headless_chrome_path',
             config_options.Type(str, default='chromium-browser')),
+        ('render_js_timeout',
+            config_options.Type(int, default=10000)),
         ('relaxedjs_path',
             config_options.Type(str, default=None)),
         ('paper_size', config_options.Choice(
@@ -97,9 +99,13 @@ class Options(object):
 
         # ...etc.
         self.js_renderer = None
+        self.render_js_timeout = local_config['render_js_timeout']
+
         if local_config['render_js']:
             self.js_renderer = HeadlessChromeDriver.setup(
-                local_config['headless_chrome_path'], logger)
+                local_config['headless_chrome_path'],
+                logger,
+                self.render_js_timeout)
 
         self.relaxed_js = RelaxedJSRenderer.setup(
             local_config['relaxedjs_path'], logger)

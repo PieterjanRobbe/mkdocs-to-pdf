@@ -9,16 +9,17 @@ class HeadlessChromeDriver(object):
     """ 'Headless Chrome' executor """
 
     @classmethod
-    def setup(self, program_path: str, logger: Logger):
+    def setup(self, program_path: str, logger: Logger, virtual_time_budget: int):
         if not which(program_path):
             raise RuntimeError(
                 'No such `Headless Chrome` program or not executable'
                 + f': "{program_path}".')
-        return self(program_path, logger)
+        return self(program_path, logger, virtual_time_budget)
 
-    def __init__(self, program_path: str, logger: Logger):
+    def __init__(self, program_path: str, logger: Logger, virtual_time_budget: int):
         self._program_path = program_path
         self._logger = logger
+        self._virtual_time_budget = virtual_time_budget
 
     def render(self, html: str) -> str:
         temp = NamedTemporaryFile(delete=False, suffix='.html')
@@ -35,7 +36,7 @@ class HeadlessChromeDriver(object):
                         '--disable-web-security',
                         '-–allow-file-access-from-files',
                         '--run-all-compositor-stages-before-draw',
-                        '--virtual-time-budget=10000',
+                        f'--virtual-time-budget={self._virtual_time_budget}',
                         '--dump-dom',
                         temp.name], stdout=PIPE) as chrome:
                 return chrome.stdout.read().decode('utf-8')
