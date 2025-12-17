@@ -6,7 +6,7 @@ from importlib import import_module
 from importlib.util import module_from_spec, spec_from_file_location
 
 from bs4 import BeautifulSoup, PageElement
-from weasyprint import HTML, urls
+from weasyprint import HTML, CSS, urls
 
 from .cover import make_cover
 from .options import Options
@@ -172,9 +172,14 @@ class Generator(object):
             self._options.relaxed_js.write_pdf(
                 html_string, abs_pdf_path)
         else:
+
             html = HTML(string=html_string)
-            render = html.render()
-            render.write_pdf(abs_pdf_path)
+            css = CSS(string='.wy-grid-for-nav { position: static !important; }')
+            html.write_pdf(target=abs_pdf_path, stylesheets=[css])
+            # render = html.render()
+            # render.write_pdf(abs_pdf_path)
+
+
 
     # ------------------------
     def _remove_empty_tags(self, soup: PageElement):
